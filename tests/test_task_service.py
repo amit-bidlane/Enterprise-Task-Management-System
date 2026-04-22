@@ -6,6 +6,7 @@ import pytest
 from app.models.task import Task
 from app.schemas.task import TaskRead
 from app.services.task import TaskService
+from datetime import datetime, timezone
 
 
 @pytest.mark.asyncio
@@ -98,6 +99,8 @@ async def test_list_tasks_for_owner_populates_cache_on_miss() -> None:
             description="Share with leadership",
             status="pending",
             owner_id=9,
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc),
         )
     ]
 
