@@ -6,7 +6,7 @@ alembic==1.16.4
 psycopg[binary]==3.2.9
 greenlet==3.2.4
 PyJWT==2.10.1
-redis==6.4.0
+redis==5.2.1
 passlib[bcrypt]==1.7.4
 python-multipart==0.0.20
 email-validator==2.2.0
