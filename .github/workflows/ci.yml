@@ -63,6 +63,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Auto-fix ruff issues
+        run: ruff check . --fix
+
+      - name: Commit ruff fixes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git diff --quiet || git commit -am "style: auto-fix ruff linting issues"
+          git push
+
+      - name: Lint with ruff
+        run: ruff check .
+
       - name: Lint
         run: ruff check .
 
