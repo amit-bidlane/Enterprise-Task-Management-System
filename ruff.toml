@@ -1,0 +1,9 @@
+[lint]
+select = ["E", "F", "I"]
+ignore = [
+    "E501",   # line too long — common in generated migration files
+    "F821",   # undefined name — false positive for SQLAlchemy string annotations
+]
+
+[lint.isort]
+known-first-party = ["app"]

@@ -34,4 +34,4 @@ class Task(Base):
         nullable=False,
     )
 
-    owner: Mapped["User"] = relationship(back_populates="tasks")
+    owner: Mapped["User"] = relationship(back_populates="tasks") # noqa: F821
