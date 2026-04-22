@@ -5,5 +5,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    proxy: {
+      "/auth": "http://localhost:8000",
+      "/tasks": "http://localhost:8000",
+    },
   },
 });
