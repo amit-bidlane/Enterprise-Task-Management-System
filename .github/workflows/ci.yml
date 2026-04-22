@@ -8,6 +8,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     services:
       postgres:
@@ -70,8 +72,9 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git diff --quiet || git commit -am "style: auto-fix ruff linting issues"
-          git push
+          git diff --quiet && git diff --staged --quiet || git push
 
       - name: Lint with ruff
         run: ruff check .
